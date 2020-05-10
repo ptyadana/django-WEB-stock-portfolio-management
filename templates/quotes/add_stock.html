@@ -14,10 +14,21 @@ Add Stock
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Stock</button>
     </form>
     <br>
+    {% block messages %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+                <a class="close" data-dismiss="alert">×</a>
+                {{ message|safe }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endblock %}
+    
     {% if stocks %}
         {% for stock in stocks %}
             <ul>
-                <li>{{stock.id}} | {{stock.ticker}}</li>
+                <li>{{stock.id}} | {{stock.ticker}} | <a href="{% url 'delete_stock' stock.id %}">Delete</a></li>
             </ul>
         {% endfor %}
     {% endif%}

@@ -36,17 +36,27 @@ def about(request):
 
 def add_stock(request):
     if request.method == 'POST':
-        print('inside post')
-        form = StockForm(request.POST or None)
+        if request.POST['ticker']:
+            form = StockForm(request.POST or None)
 
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'stock has been added successfully.')
-            return redirect('add_stock')
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'stock has been added successfully.')
+        else:
+            messages.warning(request, 'Please enter ticker name.')
+        return redirect('add_stock')
     else:
         stocks = Stock.objects.all()
         return render(request, 'quotes/add_stock.html', {'stocks':stocks})
-    
+
+def delete_stock(request, stock_id):
+    stock = Stock.objects.get(pk=stock_id)
+    stock.delete()
+
+    messages.success(request, 'stock has been deleted successfully.')
+    return redirect('add_stock')
+
+
 if __name__ == "__main__":
     base_url = 'https://sandbox.iexapis.com/stable/stock/'
     stock_ticker = 'IBM'
