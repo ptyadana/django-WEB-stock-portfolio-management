@@ -17,7 +17,7 @@ Add Stock
     {% if stocks %}
         {% for stock in stocks %}
             <ul>
-                <li>{{stock.ticker}}</li>
+                <li>{{stock.id}} | {{stock.ticker}}</li>
             </ul>
         {% endfor %}
     {% endif%}
