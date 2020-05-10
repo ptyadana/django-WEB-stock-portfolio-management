@@ -6,4 +6,20 @@ Add Stock
 
 {% block content %}
     <br>
+    <h2>Portfolio</h2>
+    <hr>
+    <form method="POST" action="{% url 'add_stock' %}" class="form-inline my-2 my-lg-0">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="add" placeholder="Stock Ticker or Name" aria-label="Add" name="ticker">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Stock</button>
+    </form>
+    <br>
+    {% if stocks %}
+        {% for stock in stocks %}
+            <ul>
+                <li>{{stock.ticker}}</li>
+            </ul>
+        {% endfor %}
+    {% endif%}
 {% endblock %}
+

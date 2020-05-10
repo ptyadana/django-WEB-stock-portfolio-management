@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.conf import settings
+from django.contrib import messages
 
 import requests
 import json
+
+from .models import Stock
+from .forms import StockForm
+
 
 def search_stock(base_url, stock_ticker):
     try:
@@ -30,7 +35,17 @@ def about(request):
     return render(request, 'quotes/about.html')
 
 def add_stock(request):
-    return render(request, 'quotes/add_stock.html')
+    if request.method == 'POST':
+        print('inside post')
+        form = StockForm(request.POST or None)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'stock has been added successfully.')
+            return redirect('add_stock')
+    else:
+        stocks = Stock.objects.all()
+        return render(request, 'quotes/add_stock.html', {'stocks':stocks})
     
 if __name__ == "__main__":
     base_url = 'https://sandbox.iexapis.com/stable/stock/'
