@@ -26,11 +26,35 @@ Add Stock
     {% endblock %}
     
     {% if stocks %}
-        {% for stock in stocks %}
-            <ul>
-                <li>{{stock.id}} | {{stock.ticker}} | <a href="{% url 'delete_stock' stock.id %}">Delete</a></li>
-            </ul>
-        {% endfor %}
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Company</th>
+                <th scope="col">Price</th>
+                <th scope="col">Change</th>
+                <th scope="col">Market Cap</th>
+                <th scope="col">Return YTD</th>
+                <th scope="col">Delete Stock</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for stock in stocks %}
+                <tr>
+                    <td>{{stock.id}}</td>
+                    <td>{{stock.ticker}}</td>
+                    <td>xx</td>
+                    <td>xx</td>
+                    <td>xx</td>
+                    <td>xx</td>
+                    <td>xx</td>
+                    <td><a href="{% url 'delete_stock' stock.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+
     {% endif%}
 {% endblock %}
 
