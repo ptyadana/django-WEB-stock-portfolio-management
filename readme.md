@@ -10,10 +10,10 @@ You can easily add, edit or delete tickers based on your preferences.
 + [bootstrap 4](https://getbootstrap.com/) - the world’s most popular front-end component library.
 + [IEX Cloud](https://iexcloud.io/) - the financial data platform for developers to build and scale financial applications.
 
-![Stock Portfolio App](https://raw.githubusercontent.com/ptyadana/placeholder.png)
+![Stock Portfolio App](https://raw.githubusercontent.com/ptyadana/django-WEB-stock-portfolio-management/master/screenshot.png)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgments
-The project is inspired by [Build a Stock Market Web App With Python and Django](https://www.skillshare.com/classes/Build-a-Stock-Market-Web-App-With-Python-and-Django/1109468527) course from Skillshare.
+The project is initially inspired by [Build a Stock Market Web App With Python and Django](https://www.skillshare.com/classes/Build-a-Stock-Market-Web-App-With-Python-and-Django/1109468527) course from Skillshare.
