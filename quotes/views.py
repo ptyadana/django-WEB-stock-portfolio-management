@@ -34,7 +34,7 @@ def home(request):
 def about(request):
     return render(request, 'quotes/about.html')
 
-def add_stock(request):
+def portfolio(request):
     if request.method == 'POST':
         if request.POST['ticker']:
             form = StockForm(request.POST or None)
@@ -44,17 +44,17 @@ def add_stock(request):
                 messages.success(request, 'stock has been added successfully.')
         else:
             messages.warning(request, 'Please enter ticker name.')
-        return redirect('add_stock')
+        return redirect('portfolio')
     else:
         stocks = Stock.objects.all()
-        return render(request, 'quotes/add_stock.html', {'stocks':stocks})
+        return render(request, 'quotes/portfolio.html', {'stocks':stocks})
 
 def delete_stock(request, stock_id):
     stock = Stock.objects.get(pk=stock_id)
     stock.delete()
 
     messages.success(request, 'stock has been deleted successfully.')
-    return redirect('add_stock')
+    return redirect('portfolio')
 
 
 if __name__ == "__main__":

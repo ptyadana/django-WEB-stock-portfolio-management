@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Add Stock
+Manage Portfolio
 {% endblock %}
 
 {% block content %}
     <br>
     <h2>Portfolio</h2>
     <hr>
-    <form method="POST" action="{% url 'add_stock' %}" class="form-inline my-2 my-lg-0">
+    <form method="POST" action="{% url 'portfolio' %}" class="form-inline my-2 my-lg-0">
         {% csrf_token %}
         <input class="form-control mr-sm-2" type="add" placeholder="Stock Ticker or Name" aria-label="Add" name="ticker">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Stock</button>
@@ -36,6 +36,9 @@ Add Stock
                 <th scope="col">Change</th>
                 <th scope="col">Market Cap</th>
                 <th scope="col">Return YTD</th>
+                <th scope="col">PE Ratio</th>
+                <th scope="col">52Wk High</th>
+                <th scope="col">52Wk Low</th>
                 <th scope="col">Delete Stock</th>
               </tr>
             </thead>
@@ -49,12 +52,15 @@ Add Stock
                     <td>xx</td>
                     <td>xx</td>
                     <td>xx</td>
+                    <td>xx</td>
+                    <td>xx</td>
+                    <td>xx</td>
                     <td><a href="{% url 'delete_stock' stock.id %}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
           </table>
-
     {% endif%}
+
 {% endblock %}
 
