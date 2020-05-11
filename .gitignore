@@ -4,7 +4,6 @@
 /.vscode
 
 #settings.py
-settings.py
 
 ## Django Heroku ##
 /staticfiles 
