@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_n1nc$1$7m6zpmqfci+2&o9piceujxmr*g*%qktaun@+3r$@y6'
+# SECRET_KEY = '_n1nc$1$7m6zpmqfci+2&o9piceujxmr*g*%qktaun@+3r$@y6'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['stock-portfolio-by-ptyadana.herokuapp.com']
 
 
 # Application definition
@@ -128,3 +130,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 #iexcloud
 IEXCLOUD_TEST_API_TOKEN = 'Tpk_63f61853ba6d4fc49ee4411ed78aa879'
+
+django_heroku.settings(locals())
