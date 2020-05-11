@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 About
 {% endblock %}
 
 {% block content %}
-This is about page.
+<br>
+<h4>This project is built with</h4>
+<hr>
+<ul>
+    <li><a href="https://www.python.org/">Python 3</a> - awesome language.</li>
+    <li><a href="https://www.djangoproject.com/">Django 3</a> - a high-level Python Web framework that encourages rapid development and clean, pragmatic design.</li>
+    <li><a href="https://getbootstrap.com/">bootstrap 4</a> - the world’s most popular front-end component library.</li>
+    <li><a href="https://iexcloud.io/">IEX Cloud</a> - the financial data platform for developers to build and scale financial applications.</li>
+</ul>
+<br>
+<h4>Profiles</h4>
+<hr>
+<p>you can check out my profiles and source code below.</p>
+<a href="https://www.linkedin.com/in/phonethiriyadana"><img style="width:40px;" src="{% static 'images/linkedin.png'%}" alt="Linkedin Profile"></a>
+<a href="https://github.com/ptyadana/django-WEB-stock-portfolio-management"><img style="width:40px;" src="{% static 'images/GitHub-Mark-64px.png' %}" alt="Github Profile"></a>
+<br><br><br>
+<h4>Upcoming Features</h4>
+<hr>
+<p>Managing portfolio by Account level.</p>
 {% endblock %}
