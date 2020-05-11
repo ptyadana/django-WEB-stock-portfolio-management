@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 
 {% block title %}
 Manage Portfolio
@@ -6,7 +7,7 @@ Manage Portfolio
 
 {% block content %}
     <br>
-    <h2>Portfolio</h2>
+    <h2>Portfolio Summary</h2>
     <hr>
     <form method="POST" action="{% url 'portfolio' %}" class="form-inline my-2 my-lg-0">
         {% csrf_token %}
@@ -24,43 +25,40 @@ Manage Portfolio
         {% endfor %}
     {% endif %}
     {% endblock %}
-    
-    {% if stocks %}
-        <table class="table table-striped table-bordered table-hover">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Symbol</th>
-                <th scope="col">Company</th>
-                <th scope="col">Price</th>
-                <th scope="col">Change</th>
-                <th scope="col">Market Cap</th>
-                <th scope="col">Return YTD</th>
-                <th scope="col">PE Ratio</th>
-                <th scope="col">52Wk High</th>
-                <th scope="col">52Wk Low</th>
-                <th scope="col">Delete Stock</th>
-              </tr>
-            </thead>
-            <tbody>
-                {% for stock in stocks %}
-                <tr>
-                    <td>{{stock.id}}</td>
-                    <td>{{stock.ticker}}</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td>xx</td>
-                    <td><a href="{% url 'delete_stock' stock.id %}">Delete</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-          </table>
-    {% endif%}
 
+    {% if stockdata %}
+    <table class="table table-striped table-bordered table-hover table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Company</th>
+            <th scope="col">Price</th>
+            <th scope="col">Previous Close</th>
+            <th scope="col">Market Cap</th>
+            <th scope="col">Return YTD</th>
+            <th scope="col">PE Ratio</th>
+            <th scope="col">52Wk High</th>
+            <th scope="col">52Wk Low</th>
+            <th scope="col">Delete Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for stock in stockdata %}
+            <tr>
+                <td>{{stock.symbol}}</td>
+                <td>{{stock.companyName}}</td>
+                <td>${{stock.latestPrice |floatformat:-2 }}</td>
+                <td>${{stock.previousClose |floatformat:-2 }}</td>
+                <td>${{stock.marketCap |intcomma }}</td>
+                <td>{{stock.ytdChange | floatformat:-2 }}</td>
+                <td>{{stock.peRatio}}</td>
+                <td>${{stock.week52High}}</td>
+                <td>${{stock.week52Low}}</td>
+                <td><a href="{% url 'delete_stock' stock.symbol %}" class="btn btn-outline-danger btn-sm">X</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    {% endif%}
 {% endblock %}
 
