@@ -128,6 +128,6 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 #iexcloud
-IEXCLOUD_TEST_API_TOKEN = 'Tpk_63f61853ba6d4fc49ee4411ed78aa879'
+IEXCLOUD_TEST_API_TOKEN = 'YOUR OWN TOKEN'
 
 django_heroku.settings(locals())

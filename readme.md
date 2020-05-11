@@ -4,6 +4,8 @@ A stock portfolio app where you can manage your stock portfolio.
 You can easily search tickers through integrated API platform provided by iexcloud.io.
 You can easily add, edit or delete tickers based on your preferences.
 
+[Stock Portfolio App - demo on Heroku](https://stock-portfolio-by-ptyadana.herokuapp.com/)
+
 ## Built with
 + [Python 3](https://www.python.org/) - awesome language.
 + [Django 3](https://www.djangoproject.com/) - a high-level Python Web framework that encourages rapid development and clean, pragmatic design.
